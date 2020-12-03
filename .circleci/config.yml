@@ -8,3 +8,6 @@ workflows:
           dockerfile: Dockerfile
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           registry: https://quay.io/user/gautampachnandahmo
+          docker-password: $DOCKER_PASSWORD
+          docker-username: $DOCKER_LOGIN
+          tag: $CIRCLE_SHA1
