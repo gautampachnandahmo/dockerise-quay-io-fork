@@ -66,7 +66,7 @@ jobs:
                       echo "logged in using data"
                       docker logout
                       echo "login using variable"
-                      if [ "quay\.io" -eq "$DOCKER_REGISTRY" ]; echo "r not okay" fi
+                      if [[ "quay\.io" == "$DOCKER_REGISTRY" ]] echo "Okay" else "Not Okay" fi
                       docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
                       echo "Done"
             - docker/check:
