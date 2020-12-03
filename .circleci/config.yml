@@ -69,7 +69,7 @@ jobs:
                   tag: 1.0.0
                   registry: quay.io
             - docker/push:
-                  image: $DOCKER_IMAGE_NAME
+                  image: $CIRCLE_PROJECT_REPONAME
                   tag: $__BUILD_VERSION
                   registry: $DOCKER_REGISTRY
 
