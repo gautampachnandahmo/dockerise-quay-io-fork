@@ -75,7 +75,7 @@ jobs:
 
     test:
         docker:
-            - image: https://quay.io/node:current-alpine
+            - image: node:current-alpine
               auth:
                 username: $DOCKER_LOGIN
                 password: $DOCKER_PASSWORD  # context / project UI env-var reference
