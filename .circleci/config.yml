@@ -3,7 +3,6 @@ orbs:
 version: 2.1
 jobs:
   build-and-test:
-    executor: node/default
     steps:
       - setup_remote_docker
       - checkout
