@@ -59,7 +59,9 @@ jobs:
             - run:
                   name: Setup __BUILD_VERSION envvar
                   command: |
+                      echo "I am testing"
                       echo "export __BUILD_VERSION=\"$(cat version.txt)\"" >> $BASH_ENV
+                      echo " u: $DOCKER_LOGIN r: $DOCKER_REGISTRY v: $__BUILD_VERSION"
             - docker/check:
                   registry: $DOCKER_REGISTRY
             - docker/build:
