@@ -4,7 +4,7 @@ version: 2.1
 workflows:
   test-env-vars:
     jobs:
-      - build
+      - build-and-publish-docker-image
   build-and-publish-docker-image:
     jobs:
       - docker/publish:
