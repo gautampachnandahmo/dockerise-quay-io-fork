@@ -67,14 +67,14 @@ jobs:
                       echo "login using variable"
                       if [[ "gautampachnandahmo" -eq "$DOCKER_LOGIN" ]]; then echo "u okay" else "u not okay" fi
                       if [[ "quay.io" -eq "$DOCKER_REGISTRY" ]]; then echo "r okay" else "r not okay" fi
-                      docker login -u="$DOCKER_LOGIN" -p="$PASSWORD" $DOCKER_REGISTRY
+                      docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY
                       echo "Done"
             - docker/check:
-                  registry: quay.io
+                  registry: $DOCKER_REGISTRY
             - docker/build:
                   image: dockerise-quay-io
                   tag: 1.0.0
-                  registry: quay.io
+                  registry: $DOCKER_REGISTRY
             - docker/push:
                   image: $CIRCLE_PROJECT_REPONAME
                   tag: $__BUILD_VERSION
