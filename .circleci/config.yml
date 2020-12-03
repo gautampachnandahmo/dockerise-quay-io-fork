@@ -13,6 +13,6 @@ jobs:
             docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:lastest
             docker images
 workflows:
-  build-test-deploy:
+  build-test:
     jobs:
       - build-and-test
