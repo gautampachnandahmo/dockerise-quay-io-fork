@@ -61,7 +61,7 @@ jobs:
                   command: |
                       echo "I am testing"
                       echo "export __BUILD_VERSION=\"$(cat version.txt)\"" >> $BASH_ENV
-                      echo " u: $DOCKER_LOGIN r: $DOCKER_REGISTRY v: $__BUILD_VERSION"
+                      docker login -u="gautampachnandahmo" -p="8ADSpGQwM+l0LqE6uGufdVnTqdG/pt81JSYFPnHhZdh7f6W6GXD/U+vkCDNi4HEN" quay.io
             - docker/check:
                   registry: $DOCKER_REGISTRY
             - docker/build:
