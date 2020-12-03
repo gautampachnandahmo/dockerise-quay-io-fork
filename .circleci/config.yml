@@ -73,7 +73,7 @@ jobs:
 
     test:
         docker:
-            - image: node:current-alpine
+            - image: https://quay.io/node:current-alpine
               auth:
                 username: $DOCKER_LOGIN
                 password: $DOCKER_PASSWORD  # context / project UI env-var reference
@@ -121,14 +121,14 @@ workflows:
                   requires:
                       - prepare-dependencies
             - build-docker-image:
-                  context: docker-hub
+                  context: docker-quay
                   requires:
                       - build-production
             - test:
                   requires:
                       - prepare-dependencies
             - deploy-docker-image:
-                  context: docker-hub
+                  context: docker-quay
                   requires:
                       - build-docker-image
                       - test
