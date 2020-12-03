@@ -75,7 +75,7 @@ jobs:
 
     test:
         docker:
-            - image: node:current-alpine
+            - image: node:15.3.0-alpine3.10
               auth:
                 username: $DOCKER_LOGIN
                 password: $DOCKER_PASSWORD  # context / project UI env-var reference
