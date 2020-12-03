@@ -2,7 +2,7 @@ orbs:
   docker: circleci/docker@1.5.0
 version: 2.1
 jobs:
-  build-and-test:
+  docker-login:
     steps:
       - setup_remote_docker
       - checkout
@@ -10,9 +10,8 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:lastest
-            docker images
+            docker login -u="gautampachnandahmo" -p="fZUqYjHNqClQ+AsuCz5hspwzm4xnLw6NSrwrAMAYKC8xW8Xzc3q4x8iH0ySINyQJ" quay.io
 workflows:
   build-test:
     jobs:
-      - build-and-test
+      - docker-login
