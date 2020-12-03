@@ -1,24 +1,19 @@
 orbs:
   docker: circleci/docker@1.5.0
 version: 2.1
+jobs:
+  build-and-test:
+    executor: node/default
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:lastest
+            docker images
 workflows:
-  build-docker:
+  build-test-deploy:
     jobs:
-      jobs:
-        build:
-          executor: docker/docker
-          steps:
-            - setup_remote_docker
-            - checkout
-            - docker/check
-            - run:
-                command: |
-                docker login quay.io -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-                docker build . -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
-  build-and-publish-docker-image:
-    jobs:
-      - docker/publish:
-          dockerfile: Dockerfile
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-          registry: https://quay.io
-          tag: $CIRCLE_SHA1
+      - build-and-test
