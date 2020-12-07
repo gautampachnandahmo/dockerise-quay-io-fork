@@ -5,8 +5,10 @@ workflows:
   build-and-publish-docker-image:
     jobs:
       steps:
-        - commands:
-          - configure-docker-credentials-store
+        - checkout
+        - run:
+          name: Compute version number
+          command: configure-docker-credentials-store
           
         - docker/check:
         - docker/publish:
