@@ -4,7 +4,6 @@ version: 2.1
 workflows:
   build-and-publish-docker-image:
     jobs:
-      - configure-docker-credentials-store
       - docker/publish:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           registry: quay.io
