@@ -3,9 +3,8 @@ jobs:
     executor: docker/docker
     steps: 
       - setup_remote_docker
-      - run:
-        command: configure-docker-credentials-store
       - checkout
+      - docker/configure-docker-credentials-store
       - docker/check
       - docker/build: 
           image: my_repo/orb-test
