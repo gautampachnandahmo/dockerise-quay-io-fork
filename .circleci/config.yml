@@ -14,11 +14,8 @@ jobs:
             - publish:
               image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
               command: echo 1
-workflow:                
-  version: 2
-  build-and-publish-docker-image:
+workflows:
+  commit:
     jobs:
-      - prepare-environment
-      - prepare-dependencies
       - build-and-push
 
