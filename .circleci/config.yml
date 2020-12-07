@@ -80,9 +80,6 @@ jobs:
                   image: $CIRCLE_PROJECT_REPONAME
                   tag: $__BUILD_VERSION
                   registry: $DOCKER_REGISTRY
-                  auth:
-                    username: $DOCKER_LOGIN
-                    password: $DOCKER_PASSWORD
 
     test:
         docker:
