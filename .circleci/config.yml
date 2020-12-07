@@ -4,8 +4,6 @@ jobs:
     steps: 
       - setup_remote_docker
       - checkout
-      - docker/configure-docker-credentials-store
-          docker-config-path: .docker/config.json
       - docker/check:
         auth:
           username: $DOCKER_LOGIN
