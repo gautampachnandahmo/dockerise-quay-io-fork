@@ -3,21 +3,22 @@ orbs:
 version: 2.1
 
 jobs:
-    prepare-environment:
+    prepare-dependencies:
         steps:
             - checkout
             - run:
                   name: Compute version number
                   command: configure-docker-credentials-store
     build-and-push: 
-         - docker/check:
-         - docker/publish:
-           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-           registry: quay.io     
+         docker:
+            - check
+            - publish:
+              image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
 workflows:
   version: 2
   build-and-publish-docker-image:
     jobs:
       - prepare-environment
+      - prepare-dependencies
       - build-and-push
 
