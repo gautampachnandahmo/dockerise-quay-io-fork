@@ -7,3 +7,4 @@ workflows:
       - docker/publish:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           registry: quay.io
+          docker-config-path: $HOME/.docker/config.json
