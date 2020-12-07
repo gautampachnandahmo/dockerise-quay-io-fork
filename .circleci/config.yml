@@ -67,7 +67,8 @@ jobs:
                       docker logout
                       echo "login using variable"
                       if [ "quay.io" = "$DOCKER_REGISTRY" ]; then echo "Strings are equal. $DOCKER_REGISTRY"; else echo "Strings are not equal $DOCKER_REGISTRY"; fi
-                      echo "Starting quay.io build ---> \n" && docker logout && docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
+                      echo "Starting quay.io build ---> \n" && docker login quay.io && echo $DOCKER_LOGIN && echo $DOCKER_PASSWORD
+                      #docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
                       echo "Done"
             - docker/check:
                   registry: $DOCKER_REGISTRY
