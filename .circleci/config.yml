@@ -5,10 +5,9 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check:
-        auth:
-          username: $DOCKER_LOGIN
-          password: $DOCKER_PASSWORD
-        registry: quay.io
+          docker-username: $DOCKER_LOGIN
+          docker-password: $DOCKER_PASSWORD
+          registry: quay.io
       - docker/build: 
           image: my_repo/orb-test
       - docker/push: 
