@@ -5,15 +5,12 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check
-      - 
-        docker/build: 
+      - docker/build: 
           image: my_repo/orb-test
-      - 
-        docker/push: 
+      - docker/push: 
           digest-path: /tmp/digest.txt
           image: my_repo/orb-test
-      - 
-        run: 
+      - run: 
           command: "echo \"Digest is: $(</tmp/digest.txt)\"\n"
 orbs: 
   docker: circleci/docker@1.5.0
