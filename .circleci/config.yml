@@ -4,7 +4,6 @@ jobs:
     steps: 
       - setup_remote_docker
       - run:
-        name: Configure credentials
         command: configure-docker-credentials-store
       - checkout
       - docker/check
