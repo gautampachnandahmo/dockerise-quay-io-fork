@@ -1,21 +1,21 @@
-orbs:
-  docker: circleci/docker@x.y.z
+jobs: 
+  build-and-push: 
+    executor: docker/docker
+    steps: 
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - 
+        docker/build: 
+          image: my_repo/orb-test
+      - 
+        docker/push: 
+          digest-path: /tmp/digest.txt
+          image: my_repo/orb-test
+      - 
+        run: 
+          command: "echo \"Digest is: $(</tmp/digest.txt)\"\n"
+orbs: 
+  docker: circleci/docker@1.5.0
 version: 2.1
-jobs:
-    prepare-dependencies:
-        steps:
-            - checkout
-            - run:
-                  name: Configure credentials
-                  command: configure-docker-credentials-store
-    build-and-push: 
-         docker:
-            - check
-            - publish:
-              image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-              command: echo 1
-workflows:
-  commit:
-    jobs:
-      - build-and-push
 
