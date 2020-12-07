@@ -5,7 +5,6 @@ workflows:
   build-and-publish-docker-image:
     jobs:
       - docker/configure-docker-credentials-store
-          docker-config-path: $HOME/.docker/config.json
       - docker/publish:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           registry: quay.io
