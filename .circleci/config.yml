@@ -1,13 +1,24 @@
 orbs:
   docker: circleci/docker@x.y.z
 version: 2.1
-workflows:
-  build-docker-image-only:
+jobs:
+    prepare-dependencies:
+        steps:
+            - checkout
+            - run:
+                  name: Configure credentials
+                  command: configure-docker-credentials-store
+    build-and-push: 
+         docker:
+            - check
+            - publish:
+              image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+                  command: echo 1
+workflow:                
+  version: 2
+  build-and-publish-docker-image:
     jobs:
-     steps:
-      - prepare:
-        commands:
-          run: echo 1
-      - docker/publish:
-        image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-        update-description: true
+      - prepare-environment
+      - prepare-dependencies
+      - build-and-push
+
