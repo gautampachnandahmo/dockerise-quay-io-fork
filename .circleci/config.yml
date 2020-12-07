@@ -72,8 +72,8 @@ jobs:
                       echo "Done"
             - docker/check:
                   registry: $DOCKER_REGISTRY
-                  docker-username: $DOCKER_LOGIN
-                  docker-password: $DOCKER_PASSWORD
+                  docker-username: "$DOCKER_LOGIN"
+                  docker-password: "$DOCKER_PASSWORD"
             - docker/build:
                   image: dockerise-quay-io
                   tag: 1.0.0
