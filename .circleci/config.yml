@@ -5,6 +5,7 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/configure-docker-credentials-store
+          docker-config-path: .docker/config.json
       - docker/check
       - docker/build: 
           image: my_repo/orb-test
