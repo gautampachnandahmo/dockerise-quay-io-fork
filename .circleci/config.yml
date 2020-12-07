@@ -62,14 +62,14 @@ jobs:
                       echo "I am testing"
                       echo "export __BUILD_VERSION=\"$(cat version.txt)\"" >> $BASH_ENV
                       echo $__BUILD_VERSION
-                      docker login -u="gautampachnandahmo" -p="8ADSpGQwM+l0LqE6uGufdVnTqdG/pt81JSYFPnHhZdh7f6W6GXD/U+vkCDNi4HEN" quay.io
-                      echo "logged in using data"
-                      docker logout
-                      echo "login using variable"
-                      if [ "quay.io" = "$DOCKER_REGISTRY" ]; then echo "Strings are equal. $DOCKER_REGISTRY"; else echo "Strings are not equal $DOCKER_REGISTRY"; fi
-                      echo "Starting quay.io build ---> \n" && docker login quay.io && echo $DOCKER_LOGIN && echo $DOCKER_PASSWORD
-                      #docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
-                      echo "Done"
+#                      docker login -u="gautampachnandahmo" -p="8ADSpGQwM+l0LqE6uGufdVnTqdG/pt81JSYFPnHhZdh7f6W6GXD/U+vkCDNi4HEN" quay.io
+#                      echo "logged in using data"
+#                      docker logout
+#                      echo "login using variable"
+#                      if [ "quay.io" = "$DOCKER_REGISTRY" ]; then echo "Strings are equal. $DOCKER_REGISTRY"; else echo "Strings are not equal $DOCKER_REGISTRY"; fi
+#                      echo "Starting quay.io build ---> \n" && docker login quay.io && echo $DOCKER_LOGIN && echo $DOCKER_PASSWORD
+#                      #docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
+#                      echo "Done"
             - docker/check:
                   registry: DOCKER_REGISTRY
                   docker-username: DOCKERHUB_LOGIN  # DOCKER_LOGIN is the default value, if it exists, it automatically would be used.
