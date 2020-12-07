@@ -71,7 +71,9 @@ jobs:
                       #docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
                       echo "Done"
             - docker/check:
-                  registry: "${DOCKER_REGISTRY}"
+                  registry: DOCKER_REGISTRY
+                  docker-username: DOCKERHUB_LOGIN  # DOCKER_LOGIN is the default value, if it exists, it automatically would be used.
+                  docker-password: DOCKERHUB_PASSWORD  # DOCKER_PASSWORD is the default value
             - docker/build:
                   image: dockerise-quay-io
                   tag: 1.0.0
