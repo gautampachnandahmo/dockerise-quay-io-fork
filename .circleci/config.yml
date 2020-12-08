@@ -15,7 +15,7 @@ commands:
       - run:
           name: Login to Quay
           command: |
-            docker login -u $QUAY_USER -p $QUAY_PASSWORD quay.io
+            docker login --username "$QUAY_USER" --password "$QUAY_PASSWORD" quay.io
       - run:
           name: test pull
           command: docker pull quay.io/gautampachnandahmo/gpa-test
