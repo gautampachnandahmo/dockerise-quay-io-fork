@@ -1,5 +1,7 @@
-jobs: 
-  build-and-push: 
+version: 2.1
+jobs:
+  build:
+    machine: true
     steps:
       - run:
         name: Login to Quay
@@ -22,8 +24,7 @@ jobs:
 #           command: "echo \"Digest is: $(</tmp/digest.txt)\"\n"
 orbs: 
    docker: circleci/docker@1.5.0
-version: 2.1
 workflows:
   commit:
     jobs:
-      - build-and-push
+      - build
