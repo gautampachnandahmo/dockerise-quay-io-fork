@@ -20,13 +20,13 @@ commands:
           command: docker login quay.io -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD"
       - run:
           name: Build Image
-          command: docker build . -t $CIRCLE_REPO_NAME/$TAG_TO_BUILD
+          command: docker build . -t $CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
       - run:
           name: Push to remote
-          command: docker push $CIRCLE_REPO_NAME/$TAG_TO_BUILD
+          command: docker push $CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
       - run:
           name: Create manifest
-          command: echo $CIRCLE_REPO_NAME/$TAG_TO_BUILD > manifest.txt
+          command: echo $CIRCLE_REPO_NAME/$CIRCLE_SHA1 > manifest.txt
 jobs:
     build-image:
        docker:
