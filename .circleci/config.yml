@@ -7,11 +7,20 @@ commands:
     steps:
       - setup_remote_docker
       - run: 
-          name: Check config
-          command: echo "Will check config"  
+          name: Check login
+          command: [[ ! -z "$DOCKER_LOGIN" ]] && echo "Login Not empty" || echo "Login Empty"
       - run:
           name: Login to Quay
           command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
+      - run:
+          name: Build Image
+          command: docker build . -t $CIRCLE_REPO_NAME/$TAG_TO_BUILD
+      - run:
+          name: Push to remote
+          command: docker push $CIRCLE_REPO_NAME/$TAG_TO_BUILD
+      - run:
+          name: Create manifest
+          command: echo $CIRCLE_REPO_NAME/$TAG_TO_BUILD > manifest.txt
 jobs:
     build-image:
        docker:
