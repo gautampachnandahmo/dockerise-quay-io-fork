@@ -13,7 +13,8 @@ commands:
           name: Login to Quay
           command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
 jobs:
-    build-image:        
+    build-image:
+       machine: true
        steps: 
         - log_into_quay
 workflows:
