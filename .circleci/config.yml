@@ -1,22 +1,16 @@
 version: 2.1
+commands:
+  log_into_quay:
+    description: Log Docker agent into Quay.io
+    steps:
+      - run:
+          name: Login to Quay
+          command: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD quay.io
 jobs:
     build-image:        
        executor: docker/docker
        steps: 
-#        - setup_remote_docker
         - log_into_quay
-#       - checkout
-#       - docker/check:
-#           registry: "quay.io"
-#       - docker/build: 
-#           image: my_repo/orb-test
-#       - docker/push: 
-#           digest-path: /tmp/digest.txt
-#           image: my_repo/orb-test
-#       - run: 
-#           command: "echo \"Digest is: $(</tmp/digest.txt)\"\n"
-orbs: 
-   base: pjci/base@1.6.0
 workflows:
   commit:
     jobs:
