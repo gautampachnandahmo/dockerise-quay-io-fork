@@ -14,7 +14,7 @@ commands:
           command: if [[ ! -z "$DOCKER_PASSWORD" ]]; then  echo "Credentials Not empty $DOCKER_PASSWORD"; else echo "Credentials Empty"; fi
       - run:
           name: Login to Quay
-          command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
+          command: docker login quay.io -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD"
       - run:
           name: Build Image
           command: docker build . -t $CIRCLE_REPO_NAME/$TAG_TO_BUILD
