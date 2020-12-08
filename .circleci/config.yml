@@ -7,7 +7,7 @@ commands:
     steps:
       - run:
           name: Login to Quay
-          command: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD quay.io
+          command: docker login -u=$DOCKER_LOGIN -p=$DOCKER_PASSWORD quay.io
 jobs:
     build-image:        
        executor: docker/docker
