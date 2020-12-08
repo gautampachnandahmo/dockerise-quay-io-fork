@@ -8,16 +8,16 @@ commands:
       - setup_remote_docker
       - run: 
           name: Check login
-          command: if [[ ! -z "$DOCKER_LOGIN" ]]; then  echo "Login Not empty $DOCKER_LOGIN"; else echo "Login Empty"; fi
+          command: if [[ ! -z "$QUAY_USER" ]]; then  echo "Login Not empty $QUAY_USER"; else echo "Login Empty"; fi
       - run:
           name: Check credentials
-          command: if [[ ! -z "$DOCKER_PASSWORD" ]]; then  echo "Credentials Not empty $DOCKER_PASSWORD"; else echo "Credentials Empty"; fi
+          command: if [[ ! -z "$QUAY_PASSWORD" ]]; then  echo "Credentials Not empty $QUAY_PASSWORD"; else echo "Credentials Empty"; fi
       - run:
           name: test pull
           command: docker pull quay.io/eris/data
       - run:
           name: Login to Quay
-          command: docker login quay.io -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD"
+          command: docker login quay.io -u="$QUAY_USER" -p="$QUAY_PASSWORD"
       - run:
           name: Build Image
           command: docker build . -t $CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
