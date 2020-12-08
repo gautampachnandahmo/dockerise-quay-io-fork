@@ -5,6 +5,9 @@ commands:
   log_into_quay:
     description: Log Docker agent into Quay.io
     steps:
+      - run: 
+          name: Check config
+          command: echo "Will check config"  
       - run:
           name: Login to Quay
           command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
