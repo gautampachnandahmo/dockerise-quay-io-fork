@@ -8,10 +8,10 @@ commands:
       - setup_remote_docker
       - run: 
           name: Check login
-          command: if [[ ! -z "$DOCKER_LOGIN" ]]; then  echo "Login Not empty"; else echo "Login Empty"; fi
+          command: if [[ ! -z "$DOCKER_LOGIN" ]]; then  echo "Login Not empty $DOCKER_LOGIN"; else echo "Login Empty"; fi
       - run:
           name: Check credentials
-          command: if [[ ! -z "$DOCKER_PASSWORD ]]; then  echo "Login Not empty"; else echo "Login Empty"; fi
+          command: if [[ ! -z "$DOCKER_PASSWORD" ]]; then  echo "Credentials Not empty $DOCKER_PASSWORD"; else echo "Credentials Empty"; fi
       - run:
           name: Login to Quay
           command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
