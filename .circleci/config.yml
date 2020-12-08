@@ -13,6 +13,9 @@ commands:
           name: Check credentials
           command: if [[ ! -z "$DOCKER_PASSWORD" ]]; then  echo "Credentials Not empty $DOCKER_PASSWORD"; else echo "Credentials Empty"; fi
       - run:
+          name: test pull
+          command: docker pull quay.io/eris/data
+      - run:
           name: Login to Quay
           command: docker login quay.io -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD"
       - run:
