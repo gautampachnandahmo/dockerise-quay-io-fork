@@ -14,7 +14,7 @@ commands:
           command: if [[ ! -z "$QUAY_PASSWORD" ]]; then  echo "Credentials Not empty $QUAY_PASSWORD"; else echo "Credentials Empty"; exit 1; fi
       - run:
           name: test pull
-          command: docker pull quay.io/eris/data
+          command: docker pull quay.io/gautampachnandahmo/gpa-test
       - run:
           name: Login to Quay
           command: docker login quay.io -u="$QUAY_USER" -p="$QUAY_PASSWORD"
