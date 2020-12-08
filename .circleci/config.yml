@@ -5,6 +5,7 @@ commands:
   log_into_quay:
     description: Log Docker agent into Quay.io
     steps:
+      - setup_remote_docker
       - run: 
           name: Check config
           command: echo "Will check config"  
