@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  docker: circleci/docker@1.5.0
 commands:
   log_into_quay:
     description: Log Docker agent into Quay.io
