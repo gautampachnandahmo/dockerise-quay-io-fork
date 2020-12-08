@@ -14,7 +14,8 @@ commands:
           command: docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
 jobs:
     build-image:
-       machine: true
+       docker:
+         - image: docker:17.05.0-ce-git
        steps: 
         - log_into_quay
 workflows:
