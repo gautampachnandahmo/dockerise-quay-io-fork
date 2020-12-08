@@ -1,7 +1,11 @@
 jobs: 
   build-and-push: 
     steps:
-      - log_into_quay:
+      - run:
+        name: Login to Quay
+        command: docker login -u=$DOCKER_LOGIN -p=$DOCKER_PASSWORD quay.io
+      - run: Build the image
+        command: docker build . -t $CIRCLE_REPO_NAME:1.0
         
 #     executor: docker/docker
 #     steps: 
